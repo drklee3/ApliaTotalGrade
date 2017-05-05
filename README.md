@@ -1,0 +1,1 @@
+Tampermonkey script to show total grades in each category
