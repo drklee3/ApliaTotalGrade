@@ -4,12 +4,12 @@ Tampermonkey script to show overall grade percentage and total grades in each ca
 
 ### Preview
 
-#### Before
+#### Without ApliaTotalGrade
 
 ![before1](http://i.imgur.com/ij5z5Ee.png)
 ![before2](http://i.imgur.com/XVkqeiq.png)
 
-#### After
+#### With ApliaTotalGrade
 
 ![after1](http://i.imgur.com/op4CBJj.png)
 ![after2](http://i.imgur.com/oxcCn8X.png)
