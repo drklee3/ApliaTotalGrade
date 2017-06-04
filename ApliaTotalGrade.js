@@ -11,7 +11,7 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
+    "use strict";
 
     var numerator = 0, denominator = 0;
     var tables = document.getElementsByClassName("table groups");
@@ -25,21 +25,21 @@
         // add up points
         for (var j = 0; j < scores.length; j++) {
             if (scores[j].textContent.includes("/")) {
-                var score_array = scores[j].textContent.split("/");
+                var scoreArray = scores[j].textContent.split("/");
 
-                numerator += parseFloat(score_array[0]);
-                denominator += parseFloat(score_array[1]);
+                numerator += parseFloat(scoreArray[0]);
+                denominator += parseFloat(scoreArray[1]);
             }
         }
         // new row of total data
-        var new_row = "<tr><td class='date'></td><td class='name'>Total</td><td class='score-both '>" +
+        var newRow = "<tr><td class='date'></td><td class='name'>Total</td><td class='score-both '>" +
             numerator + "/" + denominator +
             "</td><td class='score-both '>" +
             ((numerator / denominator) * 100).toFixed(2) +
             "%</td></tr>";
         // save data & add data to html
         grades.push(numerator / denominator);
-        tables[i].firstChild.insertAdjacentHTML("beforeend", new_row);
+        tables[i].firstChild.insertAdjacentHTML("beforeend", newRow);
         // reset values
         numerator = 0;
         denominator = 0;
@@ -47,23 +47,23 @@
 
     /* Calculate Overall Total
     ----------------------------------------------------------------*/
-    var overall_grade = 0;
-    var weight_total = 0;   // weighted %s added (in case some dont have grades yet)
+    var overallGrade = 0;
+    var weightTotal = 0;   // weighted %s added (in case some dont have grades yet)
     // get weights and add them up
     for (var i = 0; i < weights.length; i++) {
         var weight = weights[i].textContent.match(/\d+% ?/);
         weight = parseInt(weight);
 
         if (!isNaN(grades[i])) {
-            overall_grade += grades[i] * weight;
-            weight_total += weight;
+            overallGrade += grades[i] * weight;
+            weightTotal += weight;
         }
     }
 
-    overall_grade /= weight_total;
-    var overall_grade_str = "<div class='right'><h2 class='group'>Total Grade: <span class='group-weight'>" +
-        (overall_grade * 100).toFixed(2) + "%</span></h2></div>";
+    overallGrade /= weightTotal;
+    var overallGradeStr = "<div class='right'><h2 class='group'>Total Grade: <span class='group-weight'>" +
+        (overallGrade * 100).toFixed(2) + "%</span></h2></div>";
     // add data to html
     var header = document.getElementsByClassName("group-info")[0];
-    header.insertAdjacentHTML("beforeend", overall_grade_str);
+    header.insertAdjacentHTML("beforeend", overallGradeStr);
 })();
