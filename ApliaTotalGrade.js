@@ -20,19 +20,19 @@
 
     /* Calculate Individual Totals
     ----------------------------------------------------------------*/
-    for (var i = 0; i < tables.length; i++) {
-        var scores = tables[i].getElementsByClassName("score-both ");
+    for (let i = 0; i < tables.length; i++) {
+        let scores = tables[i].getElementsByClassName("score-both ");
         // add up points
-        for (var j = 0; j < scores.length; j++) {
+        for (let j = 0; j < scores.length; j++) {
             if (scores[j].textContent.includes("/")) {
-                var scoreArray = scores[j].textContent.split("/");
+                let scoreArray = scores[j].textContent.split("/");
 
                 numerator += parseFloat(scoreArray[0]);
                 denominator += parseFloat(scoreArray[1]);
             }
         }
         // new row of total data
-        var newRow = "<tr><td class='date'></td><td class='name'>Total</td><td class='score-both '>" +
+        let newRow = "<tr><td class='date'></td><td class='name'>Total</td><td class='score-both '>" +
             numerator + "/" + denominator +
             "</td><td class='score-both '>" +
             ((numerator / denominator) * 100).toFixed(2) +
@@ -47,11 +47,11 @@
 
     /* Calculate Overall Total
     ----------------------------------------------------------------*/
-    var overallGrade = 0;
-    var weightTotal = 0;   // weighted %s added (in case some dont have grades yet)
+    let overallGrade = 0;
+    let weightTotal = 0;   // weighted %s added (in case some dont have grades yet)
     // get weights and add them up
-    for (var i = 0; i < weights.length; i++) {
-        var weight = weights[i].textContent.match(/\d+% ?/);
+    for (let i = 0; i < weights.length; i++) {
+        let weight = weights[i].textContent.match(/\d+% ?/);
         weight = parseInt(weight);
 
         if (!isNaN(grades[i])) {
@@ -61,9 +61,9 @@
     }
 
     overallGrade /= weightTotal;
-    var overallGradeStr = "<div class='right'><h2 class='group'>Total Grade: <span class='group-weight'>" +
+    let overallGradeStr = "<div class='right'><h2 class='group'>Total Grade: <span class='group-weight'>" +
         (overallGrade * 100).toFixed(2) + "%</span></h2></div>";
     // add data to html
-    var header = document.getElementsByClassName("group-info")[0];
+    let header = document.getElementsByClassName("group-info")[0];
     header.insertAdjacentHTML("beforeend", overallGradeStr);
 })();
