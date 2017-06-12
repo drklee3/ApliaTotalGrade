@@ -27,7 +27,7 @@ for (let i = 0; i < tables.length; i++) {
 			let scoreArray = scores[j].textContent.split("/");
 
 			numerator += parseFloat(scoreArray[0]);
-			if (!scoreArray[1].includes('bonus')) denominator += parseFloat(scoreArray[1]);
+			if (!scoreArray[1].includes("bonus")) denominator += parseFloat(scoreArray[1]);
 		}
 	}
 	// new row of total data
