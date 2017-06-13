@@ -27,15 +27,15 @@ for (let i = 0; i < tables.length; i++) {
 			let scoreArray = scores[j].textContent.split("/");
 
 			numerator += parseFloat(scoreArray[0]);
-			if (!scoreArray[1].includes("bonus")) denominator += parseFloat(scoreArray[1]);
+			if (!scoreArray[1].includes("bonus")) {denominator += parseFloat(scoreArray[1]);}
 		}
 	}
 	// new row of total data
-	let newRow = "<tr><td class='date'></td><td class='name'>Total</td><td class='score-both '>" +
+	let newRow = "<tr><td class='date'></td><td class='name'><b>Total</b></td><td class='score-both '><b>" +
 		Math.round(numerator* 100) / 100 + "/" + denominator +
-		"</td><td class='score-both '>" +
+		"</b></td><td class='score-both '><b>" +
 		((numerator / denominator) * 100).toFixed(2) +
-		"%</td></tr>";
+		"%</b></td></tr>";
 	// save data & add data to html
 	grades.push(numerator / denominator);
 	tables[i].firstChild.insertAdjacentHTML("beforeend", newRow);
